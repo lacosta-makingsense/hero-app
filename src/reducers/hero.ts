@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux';
+
 import {
   GET_HEROES_REQUEST,
   GET_HEROES_SUCCESS,
@@ -6,18 +8,29 @@ import {
   GET_HERO_SUCCESS,
   GET_HERO_ERROR,
   HeroActionTypes,
-  HeroState
+  HeroListState,
+  HeroDetailsState,
+  // HeroState
 } from '../types/hero';
 
-const initialState: HeroState = {
+const initialListState: HeroListState = {
   heroes: [],
   loading: false
 };
 
-export function heroReducer(
-  state = initialState,
+const initialDetailsState: HeroDetailsState = {
+  loading: false
+};
+
+// const initialState: HeroState = {
+//   heroes: [],
+//   loading: false
+// };
+
+export function heroListReducer(
+  state = initialListState,
   action: HeroActionTypes
-): HeroState {
+): HeroListState {
   switch (action.type) {
     case GET_HEROES_REQUEST:
       return {
@@ -36,6 +49,16 @@ export function heroReducer(
         loading: false,
         error: action.payload.error
       };
+    default:
+      return state;
+  }
+}
+
+export function heroDetailsReducer(
+  state = initialDetailsState,
+  action: HeroActionTypes
+): HeroDetailsState {
+  switch (action.type) {
     case GET_HERO_REQUEST:
       return {
         ...state,
@@ -45,7 +68,7 @@ export function heroReducer(
       return {
         ...state,
         loading: false,
-        selectedHero: action.payload.hero
+        hero: action.payload.hero
       };
     case GET_HERO_ERROR:
       return {
@@ -57,3 +80,8 @@ export function heroReducer(
       return state;
   }
 }
+
+export const heroReducer = combineReducers({
+  list: heroListReducer,
+  details: heroDetailsReducer
+});

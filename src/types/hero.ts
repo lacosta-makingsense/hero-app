@@ -1,14 +1,30 @@
 import { ApiError } from './error';
 
 export interface Hero {
+  id: any;
   name: string;
+  description: string;
+  thumbnail: {
+    path: string;
+    extension: string;
+  }
+}
+
+export interface HeroListState {
+  heroes: Hero[];
+  error?: ApiError;
+  loading: boolean;
+}
+
+export interface HeroDetailsState {
+  hero?: Hero;
+  error?: ApiError;
+  loading: boolean;
 }
 
 export interface HeroState {
-  heroes: Hero[];
-  selectedHero?: Hero;
-  error?: ApiError;
-  loading: boolean;
+  list: HeroListState;
+  details: HeroDetailsState;
 }
 
 export const GET_HEROES_REQUEST = 'GET_HEROES_REQUEST';

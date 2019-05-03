@@ -5,8 +5,8 @@ import Col from 'react-bootstrap/Col';
 import Alert from 'react-bootstrap/Alert';
 import { Route, RouteComponentProps } from 'react-router-dom';
 
-import List from './List';
-import Details from './Details';
+import List from '../../containers/List';
+import Details from '../../containers/Details';
 
 const Heroes: FC<RouteComponentProps> = ({ match }) => {
   return (
