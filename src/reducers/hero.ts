@@ -10,22 +10,21 @@ import {
   HeroActionTypes,
   HeroListState,
   HeroDetailsState,
-  // HeroState
 } from '../types/hero';
 
 const initialListState: HeroListState = {
-  heroes: [],
+  response: {
+    heroes: [],
+    total: 0,
+    current: 1,
+    perPage: 10
+  },
   loading: false
 };
 
 const initialDetailsState: HeroDetailsState = {
   loading: false
 };
-
-// const initialState: HeroState = {
-//   heroes: [],
-//   loading: false
-// };
 
 export function heroListReducer(
   state = initialListState,
@@ -41,7 +40,7 @@ export function heroListReducer(
       return {
         ...state,
         loading: false,
-        heroes: action.payload.heroes
+        response: action.payload.response
       };
     case GET_HEROES_ERROR:
       return {

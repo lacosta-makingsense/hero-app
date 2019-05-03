@@ -6,6 +6,7 @@ import {
   GET_HERO_SUCCESS,
   GET_HERO_ERROR,
   Hero,
+  HeroesResponse,
   HeroActionTypes,
 } from '../types/hero';
 import { ApiError } from '../types/error';
@@ -16,10 +17,10 @@ export function getHeroesRequest(): HeroActionTypes {
   }
 }
 
-export function getHeroesSuccess(heroes: Hero[]): HeroActionTypes {
+export function getHeroesSuccess(response: HeroesResponse): HeroActionTypes {
   return {
     type: GET_HEROES_SUCCESS,
-    payload: { heroes }
+    payload: { response }
   }
 }
 

@@ -2,7 +2,8 @@ import axios from 'axios';
 import md5 from 'md5';
 
 import config from '../config';
-import { Hero } from '../types/hero';
+import { Hero, HeroesResponse } from '../types/hero';
+import { PaginationParams } from '../types/pagination';
 
 const IMAGE_VARIANTS = {
   small: 'standard_small',
@@ -30,12 +31,18 @@ export class MarvelService {
   }
 
   // TODO: Add support for pagination and search
-  public async getHeroes(): Promise<Hero[]> {
+  public async getHeroes({ page = 1, perPage = 20 }: PaginationParams): Promise<HeroesResponse> {
     const url = config.marvel.server + config.marvel.endpoints.heroes.get;
+    const params = { limit: perPage, offset: (page - 1) * perPage };
 
-    const result: any = await this.request(url);
+    const result: any = await this.request(url, params);
 
-    return result.data.results;
+    return {
+      heroes: result.data.results,
+      total: result.data.total,
+      current: page,
+      perPage: perPage
+    };
   }
 
   public async getHero(id: string): Promise<Hero> {

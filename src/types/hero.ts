@@ -24,8 +24,15 @@ export interface Hero {
   urls: HeroUrl[];
 }
 
-export interface HeroListState {
+export interface HeroesResponse {
   heroes: Hero[];
+  total: number;
+  current: number;
+  perPage: number;
+}
+
+export interface HeroListState {
+  response: HeroesResponse;
   error?: ApiError;
   loading: boolean;
 }
@@ -56,7 +63,7 @@ export interface GetHeroesRequestAction {
 interface GetHeroesSuccessAction {
   type: typeof GET_HEROES_SUCCESS;
   payload: {
-    heroes: Hero[];
+    response: HeroesResponse;
   };
 }
 

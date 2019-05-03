@@ -11,11 +11,12 @@ import {
 } from '../actions/hero';
 import { AppState } from '../types/store';
 import { marvelService } from '../services/marvel';
+import { PaginationParams } from '../types/pagination';
 
-export const getHeroes = (): ThunkAction<void, AppState, null, Action<string>> => async dispatch => {
+export const getHeroes = (params: PaginationParams = {}): ThunkAction<void, AppState, null, Action<string>> => async dispatch => {
   dispatch(getHeroesRequest());
   try {
-    const heroes = await marvelService.getHeroes();
+    const heroes = await marvelService.getHeroes(params);
     dispatch(getHeroesSuccess(heroes));
   } catch (e) {
     dispatch(getHeroesError(e));
