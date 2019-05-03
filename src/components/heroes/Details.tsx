@@ -43,6 +43,11 @@ export default class Details extends PureComponent<DetailsProps & RouteComponent
     }
 
     const imageUrl = MarvelService.imageUrl(this.props.hero, 'large');
+    const urls = this.props.hero.urls.map(url => (
+      <li key={url.type}>
+        <a href={url.url}>{url.type}</a>
+      </li>
+    ));
 
     return (
       <>
@@ -53,6 +58,9 @@ export default class Details extends PureComponent<DetailsProps & RouteComponent
         <p>
           <Image src={imageUrl} rounded />
         </p>
+        <ul>
+          {urls}
+        </ul>
       </>
     );
   }

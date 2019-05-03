@@ -1,5 +1,14 @@
 import { ApiError } from './error';
 
+interface HeroExtra {
+  available: number;
+}
+
+interface HeroUrl {
+  type: string;
+  url: string;
+}
+
 export interface Hero {
   id: any;
   name: string;
@@ -7,7 +16,12 @@ export interface Hero {
   thumbnail: {
     path: string;
     extension: string;
-  }
+  };
+  comics: HeroExtra;
+  events: HeroExtra;
+  series: HeroExtra;
+  stories: HeroExtra;
+  urls: HeroUrl[];
 }
 
 export interface HeroListState {
