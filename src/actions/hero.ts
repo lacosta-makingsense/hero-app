@@ -30,10 +30,9 @@ export function getHeroesError(error: ApiError): HeroActionTypes {
   }
 }
 
-export function getHeroRequest(id: string): HeroActionTypes {
+export function getHeroRequest(): HeroActionTypes {
   return {
-    type: GET_HERO_REQUEST,
-    payload: { id }
+    type: GET_HERO_REQUEST
   }
 }
 

@@ -3,7 +3,8 @@ import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
 
-import { rootReducer, AppState } from './reducers';
+import { rootReducer } from './reducers';
+import { AppState } from './types/store';
 // import apiErrorMiddleware from './middlewares/apiError.middleware';
 
 const logger = createLogger();

@@ -39,9 +39,6 @@ export interface GetHeroesErrorAction {
 
 interface GetHeroRequestAction {
   type: typeof GET_HERO_REQUEST;
-  payload: {
-    id: string;
-  };
 }
 
 interface GetHeroSuccessAction {
