@@ -1,7 +1,7 @@
 import { bindActionCreators, Dispatch } from 'redux'
 import { connect } from 'react-redux';
 
-import { getHeroes } from '../thunks/hero';
+import { getHeroesRequest } from '../actions/hero';
 import { AppState } from '../types/store';
 import List from '../components/heroes/List';
 
@@ -10,7 +10,7 @@ const mapStateToProps = (state: AppState) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
-  return bindActionCreators({ getHeroes }, dispatch);
+  return bindActionCreators({ getHeroesRequest }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(List);

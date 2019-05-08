@@ -31,7 +31,7 @@ export class MarvelService {
   }
 
   // TODO: Add support for pagination and search
-  public async getHeroes({ page = 1, perPage = 20 }: PaginationParams): Promise<HeroesResponse> {
+  public getHeroes = async ({ page = 1, perPage = 20 }: PaginationParams = {}): Promise<HeroesResponse> => {
     const url = config.marvel.server + config.marvel.endpoints.heroes.get;
     const params = { limit: perPage, offset: (page - 1) * perPage };
 
@@ -45,7 +45,7 @@ export class MarvelService {
     };
   }
 
-  public async getHero(id: string): Promise<Hero> {
+  public getHero = async (id: string): Promise<Hero> => {
     const url = config.marvel.server + config.marvel.endpoints.heroes.getById;
 
     const result: any = await this.request(url.replace(':id', id));

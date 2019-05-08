@@ -1,4 +1,5 @@
 import { ApiError } from './error';
+import { PaginationParams } from './pagination';
 
 interface HeroExtra {
   available: number;
@@ -58,6 +59,9 @@ export const GET_HERO_ERROR = 'GET_HERO_ERROR';
 
 export interface GetHeroesRequestAction {
   type: typeof GET_HEROES_REQUEST;
+  payload: {
+    params?: PaginationParams;
+  };
 }
 
 interface GetHeroesSuccessAction {
@@ -67,15 +71,18 @@ interface GetHeroesSuccessAction {
   };
 }
 
-export interface GetHeroesErrorAction {
+interface GetHeroesErrorAction {
   type: typeof GET_HEROES_ERROR;
   payload: {
     error: ApiError;
   };
 }
 
-interface GetHeroRequestAction {
+export interface GetHeroRequestAction {
   type: typeof GET_HERO_REQUEST;
+  payload: {
+    id: string;
+  };
 }
 
 interface GetHeroSuccessAction {

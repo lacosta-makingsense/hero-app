@@ -16,11 +16,11 @@ export default class List extends PureComponent<ListProps> {
   }
 
   componentDidMount() {
-    this.props.getHeroes();
+    this.props.getHeroesRequest();
   }
 
   setPage(page: number): void {
-    this.props.getHeroes({ page });
+    this.props.getHeroesRequest({ page });
   }
 
   render() {

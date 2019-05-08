@@ -26,7 +26,7 @@ export default class Details extends PureComponent<DetailsProps & RouteComponent
 
   private loadDetails() {
     const heroId = this.props.match.params.id;
-    this.props.getHero(heroId);
+    this.props.getHeroRequest(heroId);
   }
 
   render() {

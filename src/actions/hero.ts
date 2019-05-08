@@ -10,10 +10,12 @@ import {
   HeroActionTypes,
 } from '../types/hero';
 import { ApiError } from '../types/error';
+import { PaginationParams } from '../types/pagination';
 
-export function getHeroesRequest(): HeroActionTypes {
+export function getHeroesRequest(params?: PaginationParams): HeroActionTypes {
   return {
-    type: GET_HEROES_REQUEST
+    type: GET_HEROES_REQUEST,
+    payload: { params }
   }
 }
 
@@ -31,9 +33,10 @@ export function getHeroesError(error: ApiError): HeroActionTypes {
   }
 }
 
-export function getHeroRequest(): HeroActionTypes {
+export function getHeroRequest(id: string): HeroActionTypes {
   return {
-    type: GET_HERO_REQUEST
+    type: GET_HERO_REQUEST,
+    payload: { id }
   }
 }
 
