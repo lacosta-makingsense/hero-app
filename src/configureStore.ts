@@ -5,7 +5,6 @@ import { createLogger } from 'redux-logger';
 
 import { rootReducer } from './reducers';
 import { AppState } from './types/store';
-// import apiErrorMiddleware from './middlewares/apiError.middleware';
 import rootSaga from './sagas';
 
 const logger = createLogger();
