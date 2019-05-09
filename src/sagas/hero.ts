@@ -1,5 +1,5 @@
 import { SagaIterator } from 'redux-saga'
-import { call, put } from 'redux-saga/effects'
+import { call, put, delay } from 'redux-saga/effects'
 
 import {
   getHeroesSuccess,
@@ -15,6 +15,7 @@ import {
 
 export function* getHeroes(action: GetHeroesRequestAction): SagaIterator {
   const { params } = action.payload;
+  yield delay(500);
   try {
     const response: HeroesResponse = yield call(marvelService.getHeroes, params);
     yield put(getHeroesSuccess(response));

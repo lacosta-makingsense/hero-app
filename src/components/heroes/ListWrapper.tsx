@@ -26,7 +26,7 @@ export default class ListWrapper extends PureComponent<ListWrapperContainerProps
 
   componentDidUpdate(_: any, prevState: ListWrapperState) {
     if (prevState.page !== this.state.page || prevState.search !== this.state.search) {
-      this.props.getHeroesRequest({ page: this.state.page });
+      this.props.getHeroesRequest({ ...this.state });
     }
   }
 
@@ -35,7 +35,7 @@ export default class ListWrapper extends PureComponent<ListWrapperContainerProps
   }
 
   setSearch(search: string): void {
-    this.setState({ ...this.state, search });
+    this.setState({ ...this.state, page: 1, search });
   }
 
   render() {
