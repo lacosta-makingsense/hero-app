@@ -5,14 +5,14 @@ import Col from 'react-bootstrap/Col';
 import Alert from 'react-bootstrap/Alert';
 import { Route, RouteComponentProps } from 'react-router-dom';
 
-import List from '../../containers/List';
+import ListWrapper from '../../containers/ListWrapper';
 import Details from '../../containers/Details';
 
 const Heroes: FC<RouteComponentProps> = ({ match }) => {
   return (
     <Container>
       <Row>
-        <Col sm={4}><List /></Col>
+        <Col sm={4}><ListWrapper /></Col>
         <Col sm={8}>
           <Route path={`${match.path}/:id`} component={Details} />
           <Route
